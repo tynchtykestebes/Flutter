@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextButton(onPressed: () {
                 controlNameEmail(_name!, _email!);
-              }, child: const Text('Login')),
+              }, child: const Text('Login', style: TextStyle(fontSize: 18),)),
             ],),
           ),
         ),
