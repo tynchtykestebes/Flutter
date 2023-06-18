@@ -10,31 +10,50 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double bmiresults = ResultsInResultPage().bmi(height: heightCm, weight: weightKg);
+    double bmiresults =
+        ResultsInResultPage().bmi(height: heightCm, weight: weightKg);
     return Scaffold(
-      backgroundColor: AppColors.bgcColor,
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Result Page'),),
+        backgroundColor: AppColors.bgcColor,
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Result Page'),
+        ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 11, top: 53, right: 9, bottom: 12),
-          child: Column(children: [
-            const Text('Your result', style: TextStyle(fontSize: 22),),
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-              color: AppColors.cardColor,),
-              width: double.infinity,
-              height: 315,              
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                Text(ResultsInResultPage().bmiText(bmiresults), style: const TextStyle(fontSize: 24, color: Color.fromRGBO(8, 232, 44, 0.8)),),
-                Text(bmiresults.toStringAsFixed(1), style: const TextStyle(fontSize: 80),),
-                Text(ResultsInResultPage().bmiMessage(bmiresults), style: const TextStyle(fontSize: 18),),
-              ],
-              )
-              ,),
-          ],
+          padding:
+              const EdgeInsets.only(left: 11, top: 53, right: 9, bottom: 12),
+          child: Column(
+            children: [
+              const Text(
+                'Your result',
+                style: TextStyle(fontSize: 22),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.cardColor,
+                ),
+                width: double.infinity,
+                height: 315,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      ResultsInResultPage().bmiText(bmiresults),
+                      style: const TextStyle(
+                          fontSize: 24, color: Color.fromRGBO(8, 232, 44, 0.8)),
+                    ),
+                    Text(
+                      bmiresults.toStringAsFixed(1),
+                      style: const TextStyle(fontSize: 80),
+                    ),
+                    Text(
+                      ResultsInResultPage().bmiMessage(bmiresults),
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         bottomNavigationBar: ElevatedButton(
@@ -46,9 +65,9 @@ class ResultPage extends StatelessWidget {
             minimumSize: const Size(double.infinity, 73),
           ),
           onPressed: () {
-            Navigator.pop(context);          
-          }, child: AppTexts.calculateAgain,
-          )
-    );
+            Navigator.pop(context);
+          },
+          child: AppTexts.calculateAgain,
+        ));
   }
 }
