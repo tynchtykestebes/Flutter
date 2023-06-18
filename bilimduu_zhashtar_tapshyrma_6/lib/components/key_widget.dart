@@ -12,7 +12,7 @@ class KeyWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 120,
+        height: 121,
         width: 60,
         color: Colors.white,
       ),
