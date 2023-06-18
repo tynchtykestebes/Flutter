@@ -34,7 +34,7 @@ class _MyWidgetState extends State<PianoApp> {
               ),
               actions: <Widget>[
                 TextButton(
-                  child: const Text('ОК'),
+                  child: const Text('Оk'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
