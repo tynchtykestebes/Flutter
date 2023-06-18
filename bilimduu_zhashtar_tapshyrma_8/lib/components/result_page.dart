@@ -31,8 +31,11 @@ class ResultPage extends StatelessWidget {
                 Text(ResultsInResultPage().bmiText(bmiresults), style: const TextStyle(fontSize: 24, color: Color.fromRGBO(8, 232, 44, 0.8)),),
                 Text(bmiresults.toStringAsFixed(1), style: const TextStyle(fontSize: 80),),
                 Text(ResultsInResultPage().bmiMessage(bmiresults), style: const TextStyle(fontSize: 18),),
-              ],),),
-          ],),
+              ],
+              )
+              ,),
+          ],
+          ),
         ),
         bottomNavigationBar: ElevatedButton(
           style: ElevatedButton.styleFrom(

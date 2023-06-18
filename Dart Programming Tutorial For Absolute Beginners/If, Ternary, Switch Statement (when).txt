@@ -1,0 +1,39 @@
+bool isAllowed = false;
+
+void main() {
+  // If Statements
+
+  String someValue = "Hi!";
+
+  if (someValue.startsWith('H')) {
+    print('WOW');
+  } else {
+    print('naha');
+  }
+
+  // Ternary Operators
+
+  String value = someValue.startsWith('H') ? 'WOW' : 'naha';
+  
+  print(value);
+  
+  int age = 20;
+
+  // Switch Statement
+
+  switch (someValue) {
+    case 'Hi!' when age>=20:
+      print('Yep');
+    case 'Hi!!':
+      print('Hello');
+    case 'Hi!!!':
+      print('Hello');
+    default:
+      print('You');
+  }
+}
+
+Console
+WOW
+WOW
+Yep

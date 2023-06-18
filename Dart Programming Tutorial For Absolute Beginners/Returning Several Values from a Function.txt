@@ -1,0 +1,17 @@
+void main() {
+  var name = printName();
+  print(name);
+  print(name.$2);
+}
+
+
+(int, String, bool, String) printName() {
+  return (12, 'Tynchtyk', true, 'Estebes');
+}
+
+
+/*
+ <datatype> fnName() {
+ 
+ }
+ * */

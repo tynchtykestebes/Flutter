@@ -1,0 +1,30 @@
+void main() {
+  String destinationZone = 'ABC';
+  double weightInKgs = 4.5;
+  
+  double cost = 0;
+  
+  if(destinationZone == 'PQR') {
+    cost = weightInKgs*10;
+  } else if(destinationZone == 'XYZ') {
+    cost = weightInKgs*5;
+  } else if(destinationZone == 'ABC') {
+    cost = weightInKgs*7;
+  } else {
+    print('Destination is incorrect');
+    return;
+  }
+  
+  print('Shipping cost is: $cost');
+  
+//   switch (destinationZone) {
+//     case 'PQR':
+//       print('Shipping cost is: ${weightInKgs*10}');
+//     case 'XYZ':
+//       print('Shipping cost is: ${weightInKgs*5}');
+//     case 'ABC':
+//       print('Shipping cost is: ${weightInKgs*7}');
+//     default:print('Destination is incorrect');
+      
+//   }
+}
