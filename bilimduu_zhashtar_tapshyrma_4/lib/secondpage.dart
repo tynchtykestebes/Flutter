@@ -32,7 +32,7 @@ class _IamRichState extends State<IamRich> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(236, 185, 11, 1),
+      backgroundColor: const Color.fromRGBO(236, 186, 11, 1),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(236, 185, 11, 1),
         centerTitle: true,
