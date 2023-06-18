@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class KeyWidget extends StatelessWidget {
   const KeyWidget({
-    super.key, required this.onTap,
+    super.key,
+    required this.onTap,
   });
   final Function() onTap;
 
