@@ -33,6 +33,7 @@ class _IamRichState extends State<IamRich> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(236, 185, 11, 1),
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: const Color.fromRGBO(236, 185, 11, 1),
         centerTitle: true,
         title: const Text(
