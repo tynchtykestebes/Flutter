@@ -23,7 +23,7 @@ class _DiceAppState extends State<DiceApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(255, 233, 59, 1),
+      backgroundColor: const Color.fromRGBO(255, 234, 59, 1),
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
