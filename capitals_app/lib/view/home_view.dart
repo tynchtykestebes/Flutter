@@ -58,35 +58,40 @@ class _HomeViewState extends State<HomeView> {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 0.8,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15),
-                  itemCount: continents.length,
-                  itemBuilder: (BuildContext ctx, index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TestView(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: AppColors.listViewColor,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Text(
-                          continents[index],
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w500),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 0.8,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15),
+                itemCount: continents.length,
+                itemBuilder: (BuildContext ctx, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TestView(),
                         ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: AppColors.listViewColor,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Column(
+                        children: [
+                          Text(
+                            continents[index],
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       ),
-                    );
-                  }),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],

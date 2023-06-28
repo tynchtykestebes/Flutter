@@ -21,4 +21,9 @@ class AppTextStyle {
     fontSize: 20,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle capitalName = TextStyle(
+    color: Colors.black,
+    fontSize: 22,
+    fontWeight: FontWeight.w500,
+  );
 }

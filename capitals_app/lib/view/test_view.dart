@@ -72,8 +72,34 @@ class _TestViewState extends State<TestView> {
           ),
         ],
       ),
-      body: const Column(
-        children: [],
+      body: Column(
+        children: [
+          SliderTheme(
+            data: SliderThemeData(
+              thumbShape: SliderComponentShape.noThumb,
+              trackHeight: 5.0,
+              overlayColor: Colors.transparent,
+              activeTrackColor: Colors.blue,
+              inactiveTrackColor: Colors.grey.withOpacity(0.5),
+            ),
+            child: Slider(
+              value: 25,
+              onChanged: (v) {},
+              min: 0,
+              max: 50,
+            ),
+          ),
+          const Text(
+            'Paris',
+            style: AppTextStyle.capitalName,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(
+              10,
+            ),
+            child: Image.asset('assets/images/capitals/paris.jpg'),
+          ),
+        ],
       ),
     );
   }
