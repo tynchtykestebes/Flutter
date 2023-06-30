@@ -99,6 +99,31 @@ class _TestViewState extends State<TestView> {
             ),
             child: Image.asset('assets/images/capitals/paris.jpg'),
           ),
+          const SizedBox(height: 10,),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.only(
+                left: 5,
+                right: 5,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.6,
+              ),
+              itemCount: 4,
+              itemBuilder: ((context, index) {
+                return Card(
+                  color: Colors.grey[400],
+                  child: InkWell(
+                    onTap: () {},
+                    child: const Center(
+                      child: Text('data'),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
         ],
       ),
     );
