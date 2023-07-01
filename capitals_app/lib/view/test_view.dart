@@ -1,5 +1,6 @@
 import 'package:capitals_app/constants/app_colors.dart';
 import 'package:capitals_app/constants/app_text_style.dart';
+import 'package:capitals_app/model/question_answers.dart';
 import 'package:flutter/material.dart';
 
 class TestView extends StatefulWidget {
@@ -10,8 +11,11 @@ class TestView extends StatefulWidget {
 }
 
 class _TestViewState extends State<TestView> {
+  List<Question> questionAnswers = questionAnswersList;
+  int currentQuestionIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Question currentQuestion = questionAnswers[currentQuestionIndex];
     return Scaffold(
       backgroundColor: AppColors.scaffoldBgc,
       appBar: AppBar(
@@ -89,17 +93,20 @@ class _TestViewState extends State<TestView> {
               max: 50,
             ),
           ),
-          const Text(
-            'Paris',
+          Text(
+            currentQuestion.text,
             style: AppTextStyle.capitalName,
           ),
           Padding(
             padding: const EdgeInsets.all(
               10,
             ),
-            child: Image.asset('assets/images/capitals/paris.jpg'),
+            child: Image.asset(
+                'assets/images/capitals/${currentQuestion.image}.jpg'),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.only(
@@ -112,12 +119,22 @@ class _TestViewState extends State<TestView> {
               ),
               itemCount: 4,
               itemBuilder: ((context, index) {
+                Answer answer = currentQuestion.answers[index];
                 return Card(
                   color: Colors.grey[400],
                   child: InkWell(
-                    onTap: () {},
-                    child: const Center(
-                      child: Text('data'),
+                    onTap: () {
+                      setState(() {
+                        if (currentQuestionIndex ==
+                            questionAnswers.length - 1) {
+                          currentQuestionIndex = 0;
+                        } else {
+                          currentQuestionIndex++;
+                        }
+                      });
+                    },
+                    child: Center(
+                      child: Text(answer.text),
                     ),
                   ),
                 );

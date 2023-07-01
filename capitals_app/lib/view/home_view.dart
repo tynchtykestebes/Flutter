@@ -1,6 +1,8 @@
 import 'package:capitals_app/constants/app_colors.dart';
+import 'package:capitals_app/model/continents.dart';
 import 'package:capitals_app/view/test_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -10,14 +12,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<String> continents = [
-    'Asia',
-    'Europe',
-    'Africa',
-    'North America',
-    'South America',
-    'Australia and Oceania',
-  ];
+  List<Continents> continents = continentsList;
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +75,17 @@ class _HomeViewState extends State<HomeView> {
                           color: AppColors.listViewColor,
                           borderRadius: BorderRadius.circular(15)),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            continents[index],
+                            continents[index].name,
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w500),
+                          ),
+                          SvgPicture.asset(
+                            'assets/images/continents/${continents[index].image}.svg',
+                            height: 150,
+                            colorFilter: ColorFilter.mode(continents[index].color, BlendMode.srcIn),
                           ),
                         ],
                       ),
