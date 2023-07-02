@@ -54,20 +54,23 @@ class _HomeViewState extends State<HomeView> {
               padding: const EdgeInsets.all(20),
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 0.8,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15),
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                ),
                 itemCount: continents.length,
                 itemBuilder: (BuildContext ctx, index) {
                   return InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TestView(),
-                        ),
-                      );
+                      if (continents[index].name == 'Europe') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TestView(),
+                          ),
+                        );
+                      }
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -85,7 +88,8 @@ class _HomeViewState extends State<HomeView> {
                           SvgPicture.asset(
                             'assets/images/continents/${continents[index].image}.svg',
                             height: 150,
-                            colorFilter: ColorFilter.mode(continents[index].color, BlendMode.srcIn),
+                            colorFilter: ColorFilter.mode(
+                                continents[index].color, BlendMode.srcIn),
                           ),
                         ],
                       ),

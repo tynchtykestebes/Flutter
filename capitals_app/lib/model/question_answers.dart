@@ -67,10 +67,70 @@ const Question q5 = Question(
   ],
 );
 
+const Question q6 = Question(
+  text: 'Athens',
+  image: 'athens',
+  answers: [
+    Answer(text: 'Greece', correctAnswer: true),
+    Answer(text: 'Hungary', correctAnswer: false),
+    Answer(text: 'Latvia', correctAnswer: false),
+    Answer(text: 'Georgia', correctAnswer: false),
+  ],
+);
+
+const Question q7 = Question(
+  text: 'Brussels',
+  image: 'brussels',
+  answers: [
+    Answer(text: 'Netherlands', correctAnswer: false),
+    Answer(text: 'Switzerland', correctAnswer: false),
+    Answer(text: 'Belgium', correctAnswer: true),
+    Answer(text: 'Lithuania', correctAnswer: false),
+  ],
+);
+
+const Question q8 = Question(
+  text: 'Budapest',
+  image: 'budapest',
+  answers: [
+    Answer(text: 'Monaco', correctAnswer: false),
+    Answer(text: 'Hungary', correctAnswer: true),
+    Answer(text: 'Czech Republic', correctAnswer: false),
+    Answer(text: 'Liechtenstein', correctAnswer: false),
+  ],
+);
+
+const Question q9 = Question(
+  text: 'Prague',
+  image: 'prague',
+  answers: [
+    Answer(text: 'Chech Republic', correctAnswer: true),
+    Answer(text: 'Switzerland', correctAnswer: false),
+    Answer(text: 'Malta', correctAnswer: false),
+    Answer(text: 'Austria', correctAnswer: false),
+  ],
+);
+
+const Question q10 = Question(
+  text: 'Rome',
+  image: 'rome',
+  answers: [
+    Answer(text: 'Spain', correctAnswer: false),
+    Answer(text: 'Belgium', correctAnswer: false),
+    Answer(text: 'Ireland', correctAnswer: false),
+    Answer(text: 'Italy', correctAnswer: true),
+  ],
+);
+
 List<Question> questionAnswersList = [
   q1,
   q2,
   q3,
   q4,
   q5,
+  q6,
+  q7,
+  q8,
+  q9,
+  q10,
 ];

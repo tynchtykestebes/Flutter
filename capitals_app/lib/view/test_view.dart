@@ -13,9 +13,95 @@ class TestView extends StatefulWidget {
 class _TestViewState extends State<TestView> {
   List<Question> questionAnswers = questionAnswersList;
   int currentQuestionIndex = 0;
+  int incorrectAnswerCount = 0;
+  int correctAnswerCount = 0;
+  int remainingAttempts = 3;
+  late int totalQuestions;
+
+  @override
+  void initState() {
+    super.initState();
+    totalQuestions = questionAnswers.length;
+  }
+
+  void showIncorrectAnswersDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Unfortunately'),
+          content: const Text(
+            'You have 3 incorrect answers. Start again!',
+            style: TextStyle(fontSize: 18),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                resetTest();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showTestResultDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(child: Text('Test Result')),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Correct Answers: $correctAnswerCount',
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.green,
+                ),
+              ),
+              Text(
+                'Incorrect Answers: $incorrectAnswerCount',
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                resetTest();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void resetTest() {
+    setState(() {
+      currentQuestionIndex = 0;
+      incorrectAnswerCount = 0;
+      correctAnswerCount = 0;
+      remainingAttempts = 3;
+      totalQuestions = questionAnswers.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Question currentQuestion = questionAnswers[currentQuestionIndex];
+    double sliderValue =
+        currentQuestionIndex.toDouble() / (questionAnswers.length);
     return Scaffold(
       backgroundColor: AppColors.scaffoldBgc,
       appBar: AppBar(
@@ -28,19 +114,19 @@ class _TestViewState extends State<TestView> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  '0',
+                  '$incorrectAnswerCount',
                   style: AppTextStyle.incorrecQuantity,
                 ),
                 Text(
-                  '32',
+                  '$totalQuestions',
                   style: AppTextStyle.totalQuantity,
                 ),
                 Text(
-                  '0',
+                  '$correctAnswerCount',
                   style: AppTextStyle.correcQuantity,
                 ),
               ],
@@ -49,24 +135,24 @@ class _TestViewState extends State<TestView> {
           const SizedBox(
             width: 40,
           ),
-          const Text(
-            '3',
+          Text(
+            '$remainingAttempts',
             style: AppTextStyle.attempts,
           ),
           const SizedBox(
             width: 40,
           ),
-          const Icon(
+          Icon(
             Icons.favorite,
-            color: Colors.red,
+            color: remainingAttempts >= 3 ? Colors.red : Colors.white,
           ),
-          const Icon(
+          Icon(
             Icons.favorite,
-            color: Colors.red,
+            color: remainingAttempts >= 2 ? Colors.red : Colors.white,
           ),
-          const Icon(
+          Icon(
             Icons.favorite,
-            color: Colors.red,
+            color: remainingAttempts >= 1 ? Colors.red : Colors.white,
           ),
           IconButton(
             onPressed: () {},
@@ -87,10 +173,11 @@ class _TestViewState extends State<TestView> {
               inactiveTrackColor: Colors.grey.withOpacity(0.5),
             ),
             child: Slider(
-              value: 25,
-              onChanged: (v) {},
+              value: sliderValue,
+              onChanged: (double value) {},
               min: 0,
-              max: 50,
+              max: 1,
+              divisions: questionAnswers.length,
             ),
           ),
           Text(
@@ -125,16 +212,33 @@ class _TestViewState extends State<TestView> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
+                        if (answer.correctAnswer) {
+                          correctAnswerCount++;
+                        } else {
+                          incorrectAnswerCount++;
+                          remainingAttempts--;
+                          if (incorrectAnswerCount >= 3) {
+                            showIncorrectAnswersDialog();
+                          }
+                        }
+
                         if (currentQuestionIndex ==
                             questionAnswers.length - 1) {
-                          currentQuestionIndex = 0;
+                          showTestResultDialog();
                         } else {
                           currentQuestionIndex++;
                         }
+
+                        totalQuestions--;
                       });
                     },
                     child: Center(
-                      child: Text(answer.text),
+                      child: Text(
+                        answer.text,
+                        style: const TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
                   ),
                 );
