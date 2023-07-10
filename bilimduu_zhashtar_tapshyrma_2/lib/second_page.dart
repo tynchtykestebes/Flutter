@@ -21,7 +21,7 @@ class SecondPage extends StatelessWidget {
           children: [
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(170, 170, 170, 0.8),
+              color: const Color.fromRGBO(170, 171, 170, 0.8),
               borderRadius: BorderRadius.circular(10),
             ),
             width: double.infinity,
