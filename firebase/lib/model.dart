@@ -2,16 +2,17 @@ import 'dart:convert';
 
 class Todo {
   Todo({
+    this.id,
     required this.title,
     required this.description,
     required this.isCompleted,
     required this.author,
   });
+  String? id;
   final String title;
   final String description;
   final bool isCompleted;
   final String author;
-  
 
   Map<String, dynamic> toMap() {
     return {
